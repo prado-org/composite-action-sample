@@ -38,4 +38,5 @@ runs:
         echo "${{ env.mysecret3 }}"
     
     - name: ghcr.io Login
+      shell: bash
       run: echo ${{ env.mysecret3 }} | docker login ghcr.io -u USERNAME --password-stdin
