@@ -33,6 +33,6 @@ runs:
       shell: bash
       run: |
         echo "Using secrets"
-        echo "${{ env.mysecret01 }}"
-        echo "${{ env.mysecret02 }}"
-        echo "${{ env.mysecret03 }}"
+        echo "${{ env.mysecret1 }}"
+        echo "${{ env.mysecret2 }}"
+        echo "${{ env.mysecret3 }}"
