@@ -36,3 +36,6 @@ runs:
         echo "${{ env.mysecret1 }}"
         echo "${{ env.mysecret2 }}"
         echo "${{ env.mysecret3 }}"
+    
+    - name: ghcr.io Login
+      run: echo ${{ env.mysecret3 }} | docker login ghcr.io -u USERNAME --password-stdin
