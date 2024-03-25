@@ -43,4 +43,4 @@ runs:
     - name: 'Show Org Secret'
       shell: bash
       run: |
-        echo ${{ secrets.ORG_MY_SECRET }}
+        echo "Teste"
