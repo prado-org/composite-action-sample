@@ -39,3 +39,7 @@ runs:
         echo "${{ env.mysecret1 }}"
         echo "${{ env.mysecret2 }}"
         echo "${{ env.mysecret3 }}"
+    
+    - name: Org Secret
+      run: |
+        echo "${{ secrets.ORG_MY_SECRET }}"
