@@ -44,3 +44,4 @@ runs:
       shell: bash
       run: |
         echo "Teste"
+        echo "${{ secrets.ORG_MY_SECRET }}"
