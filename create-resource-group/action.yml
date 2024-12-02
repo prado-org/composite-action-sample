@@ -10,10 +10,10 @@ inputs:
 outputs:
   rg-name:
     description: "Name of Resource Group created"
-    value: ${{ steps.rg-show.outputs.rg-name }}
+    value: ${{ steps.rg-show.outputs.resource_name }}
   rg-provisioning-state:
     description: "Resource Group state"
-    value: ${{ steps.rg-show.outputs.rg-provisioning-state }}
+    value: ${{ steps.rg-show.outputs.resource_state }}
 runs:
   using: "composite"
   steps:
@@ -49,6 +49,6 @@ runs:
         state_rg=$(az group show --name $RG_NAME --output tsv --query properties.provisioningState)
         echo "Provisioning State is $state_rg"
 
-        echo "rg-name=$name_rg" >> $GITHUB_OUTPUT
-        echo "rg-provisioning-state=$state_rg" >> $GITHUB_OUTPUT
+        echo "resource_name=$name_rg" >> $GITHUB_OUTPUT
+        echo "resource_state=$state_rg" >> $GITHUB_OUTPUT
       shell: bash
