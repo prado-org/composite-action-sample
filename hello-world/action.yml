@@ -28,9 +28,9 @@ runs:
       shell: bash
     
     - name: Make goodbye.sh executable
-      run: chmod +x hello-world/goodbye.sh
+      run: chmod +x ${{ github.action_path }}/goodbye.sh
       shell: bash
   
     - name: Call goodbye.sh script
-      run: hello-world/goodbye.sh
+      run: ${{ github.action_path }}/goodbye.sh
       shell: bash
