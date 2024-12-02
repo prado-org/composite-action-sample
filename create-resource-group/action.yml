@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Create Resource Group'
+description: 'Create Azure Resource Group'
 inputs:
   rg-name:
     description: 'Name of Resource Group'
@@ -7,10 +7,10 @@ inputs:
   rg-location:
     description: 'Location of Resource Group'
     required: true
-outputs:
-  resource-group-name:
-    description: "Name of Resource Group created"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+#outputs:
+#  resource-group-name:
+#    description: "Name of Resource Group created"
+#    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:
