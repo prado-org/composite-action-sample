@@ -10,10 +10,10 @@ inputs:
 outputs:
   rg-name:
     description: "Name of Resource Group created"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    value: ${{ steps.rg-show.outputs.rg-name }}
   rg-provisioning-state:
-    description: "Name of Resource Group created"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    description: "Resource Group state"
+    value: ${{ steps.rg-show.outputs.rg-provisioning-state }}
 runs:
   using: "composite"
   steps:
@@ -39,6 +39,7 @@ runs:
       shell: bash
     
     - name: Show information
+      id: rg-show
       run: |
         RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
 
