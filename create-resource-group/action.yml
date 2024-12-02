@@ -1,0 +1,32 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  rg-name:
+    description: 'Name of Resource Group'
+    required: true
+  rg-location:
+    description: 'Location of Resource Group'
+    required: true
+outputs:
+  resource-group-name:
+    description: "Name of Resource Group created"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - name: Generate Resource Group name
+      id: rg-group-name
+      run: |
+        rgNAME=rg-${{ inputs.rg-name }}
+        echo "rgName=$(echo $rgNAME)" >> $GITHUB_OUTPUT
+
+    - name: Create Resource Group
+      run: |
+        $RG_NAME=${{ steps.rg-group-name.outputs.rgName }}
+        echo "Resource Group Name is $RG_NAME"
+        
+        if [ $(az group exists --name $RG_NAME = false ]; then
+          az group create --name $RG_NAME --location ${{ inputs.rg-location }}
+        else
+            echo "Resource group already exists"
+        fi
