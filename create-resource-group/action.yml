@@ -19,6 +19,7 @@ runs:
       run: |
         rgNAME=rg-${{ inputs.rg-name }}
         echo "rgName=$(echo $rgNAME)" >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: Create Resource Group
       run: |
@@ -30,3 +31,4 @@ runs:
         else
             echo "Resource group already exists"
         fi
+      shell: bash
