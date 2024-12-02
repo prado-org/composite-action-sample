@@ -7,10 +7,13 @@ inputs:
   rg-location:
     description: 'Location of Resource Group'
     required: true
-#outputs:
-#  resource-group-name:
-#    description: "Name of Resource Group created"
-#    value: ${{ steps.random-number-generator.outputs.random-number }}
+outputs:
+  rg-name:
+    description: "Name of Resource Group created"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+  rg-provisioning-state:
+    description: "Name of Resource Group created"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:
@@ -33,4 +36,18 @@ runs:
         else
             echo "Resource group already exists"
         fi
+      shell: bash
+    
+    - name: Show information
+      run: |
+        RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
+
+        name-rg=az group show --name $RG_NAME --output tsv --query name
+        echo "Resource Group Name is $name-rg"
+        
+        state-rg=az group show --name $RG_NAME --output tsv --query properties.provisioningState
+        echo "Provisioning State is $state-rg"
+
+        echo "rg-name=$($name-rg)" >> $GITHUB_OUTPUT
+        echo "rg-provisioning-state=$($state-rg)" >> $GITHUB_OUTPUT
       shell: bash
