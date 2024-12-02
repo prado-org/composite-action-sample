@@ -42,12 +42,12 @@ runs:
       run: |
         RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
 
-        name-rg=$(az group show --name $RG_NAME --output tsv --query name)
-        echo "Resource Group Name is $name-rg"
+        name_rg=$(az group show --name $RG_NAME --output tsv --query name)
+        echo "Resource Group Name is $name_rg"
         
-        state-rg=$(az group show --name $RG_NAME --output tsv --query properties.provisioningState)
-        echo "Provisioning State is $state-rg"
+        state_rg=$(az group show --name $RG_NAME --output tsv --query properties.provisioningState)
+        echo "Provisioning State is $state_rg"
 
-        echo "rg-name=$name-rg" >> $GITHUB_OUTPUT
-        echo "rg-provisioning-state=$state-rg" >> $GITHUB_OUTPUT
+        echo "rg_name=$name_rg" >> $GITHUB_OUTPUT
+        echo "rg_provisioning-state=$state_rg" >> $GITHUB_OUTPUT
       shell: bash
