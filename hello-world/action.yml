@@ -13,7 +13,9 @@ runs:
   using: "composite"
   steps:
     - name: Hello
-      run: echo Hello ${{ inputs.who-to-greet }}.
+      run: |
+        echo Call composite action hello world
+        echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     
     - name: Create random number
@@ -22,13 +24,13 @@ runs:
       shell: bash
     
     - name: GitHub Action Path
-      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      run: echo "${{ github.action_path }}"
       shell: bash
     
     - name: Make goodbye.sh executable
-      run: chmod +x goodbye.sh
+      run: chmod +x hello-world/goodbye.sh
       shell: bash
   
     - name: Call goodbye.sh script
-      run: goodbye.sh
+      run: hello-world/goodbye.sh
       shell: bash
