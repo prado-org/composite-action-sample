@@ -25,7 +25,7 @@ runs:
 
     - name: Create Resource Group
       run: |
-        $RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
+        RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
         echo "Resource Group Name is $RG_NAME"
         
         if [ $(az group exists --name $RG_NAME = false ]; then
