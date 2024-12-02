@@ -48,6 +48,6 @@ runs:
         state-rg=$(az group show --name $RG_NAME --output tsv --query properties.provisioningState)
         echo "Provisioning State is $state-rg"
 
-        echo "rg-name=$($name-rg)" >> $GITHUB_OUTPUT
-        echo "rg-provisioning-state=$($state-rg)" >> $GITHUB_OUTPUT
+        echo "rg-name=$name-rg" >> $GITHUB_OUTPUT
+        echo "rg-provisioning-state=$state-rg" >> $GITHUB_OUTPUT
       shell: bash
