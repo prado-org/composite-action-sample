@@ -28,7 +28,7 @@ runs:
         RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
         echo "Resource Group Name is $RG_NAME"
         
-        if [ $(az group exists --name $RG_NAME = false ]; then
+        if [ $(az group exists --name $RG_NAME) = false ]; then
           az group create --name $RG_NAME --location ${{ inputs.rg-location }}
         else
             echo "Resource group already exists"
