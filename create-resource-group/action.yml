@@ -21,7 +21,7 @@ runs:
       id: rg-group-name
       run: |
         rgNAME="rg-${{ inputs.rg-name }}"
-        echo "Resource group name created!"
+        echo "Creating Resource group naming convention"
         echo $rgNAME
         echo "rgName=$(echo $rgNAME)" >> $GITHUB_OUTPUT
       shell: bash
@@ -42,10 +42,10 @@ runs:
       run: |
         RG_NAME="${{ steps.rg-group-name.outputs.rgName }}"
 
-        name-rg=az group show --name $RG_NAME --output tsv --query name
+        name-rg=$(az group show --name $RG_NAME --output tsv --query name)
         echo "Resource Group Name is $name-rg"
         
-        state-rg=az group show --name $RG_NAME --output tsv --query properties.provisioningState
+        state-rg=$(az group show --name $RG_NAME --output tsv --query properties.provisioningState)
         echo "Provisioning State is $state-rg"
 
         echo "rg-name=$($name-rg)" >> $GITHUB_OUTPUT
